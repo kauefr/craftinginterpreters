@@ -1,11 +1,9 @@
-package com.craftinginterpreters.lox;
+package lox;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.craftinginterpreters.lox.TokenType.*;
+import static lox.TokenType.*;
 
 public class Scanner {
     private final String source;
@@ -25,23 +23,23 @@ public class Scanner {
             scanToken();
         }
 
-        tokens.add(new Token(EOF, "", null, line));
+        tokens.add(new Token(TokenType.EOF, "", null, line));
         return tokens;
     }
 
     private void scanToken() {
         char c = advance();
         switch (c) {
-            case '(': addToken(LEFT_PAREN); break;
-            case ')': addToken(RIGHT_PAREN); break;
-            case '{': addToken(LEFT_BRACE); break;
-            case '}': addToken(RIGHT_BRACE); break;
-            case ',': addToken(COMMA); break;
-            case '.': addToken(DOT); break;
-            case '-': addToken(MINUS); break;
-            case '+': addToken(PLUS); break;
-            case ';': addToken(SEMICOLON); break;
-            case '*': addToken(STAR); break;
+            case '(': addToken(TokenType.LEFT_PAREN); break;
+            case ')': addToken(TokenType.RIGHT_PAREN); break;
+            case '{': addToken(TokenType.LEFT_BRACE); break;
+            case '}': addToken(TokenType.RIGHT_BRACE); break;
+            case ',': addToken(TokenType.COMMA); break;
+            case '.': addToken(TokenType.DOT); break;
+            case '-': addToken(TokenType.MINUS); break;
+            case '+': addToken(TokenType.PLUS); break;
+            case ';': addToken(TokenType.SEMICOLON); break;
+            case '*': addToken(TokenType.STAR); break;
             //TODO: 4.5.1 - Lexical Errors
         }
     }
